@@ -158,6 +158,7 @@ def load_image(image_path, image_height=64, image_width=256):
 
 def main():
     parser = argparse.ArgumentParser()
+    parser.add_argument("--ckpt_path", type=str, default="textriro.pth")
     parser.add_argument("--num_inference_steps", type=int, default=20)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--guidance_scale", type=float, default=2.2)
@@ -167,7 +168,7 @@ def main():
 
     cfg_path = 'configs/train.yaml'
     model = create_model(cfg_path).cuda()
-    model.load_state_dict(load_state_dict(""), strict=False)
+    model.load_state_dict(load_state_dict(args.ckpt_path), strict=False)
     model.eval()
     pipeline = InferPipeline(model)
 
