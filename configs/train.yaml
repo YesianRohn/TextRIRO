@@ -4,19 +4,19 @@ data:
   train:
     size: [64, 256]
     lmdb_paths: [
-      'Union14M-L-LMDB-Filtered/filter_train_challenging',
-      'Union14M-L-LMDB-Filtered/filter_train_hard',
-      'Union14M-L-LMDB-Filtered/filter_train_medium',
-      'Union14M-L-LMDB-Filtered/filter_train_normal',
-      'Union14M-L-LMDB-Filtered/filter_train_easy',
+      'data/Union14M-L-LMDB-Filtered/filter_train_challenging',
+      'data/Union14M-L-LMDB-Filtered/filter_train_hard',
+      'data/Union14M-L-LMDB-Filtered/filter_train_medium',
+      'data/Union14M-L-LMDB-Filtered/filter_train_normal',
+      'data/Union14M-L-LMDB-Filtered/filter_train_easy',
       ]
 
   validation:
     size: [64, 256]
     lmdb_paths: [
-      'test/CUTE80',
-      'test/IC13_857',
-      'test/IC15_1811',
+      'data/test/CUTE80',
+      'data/test/IC13_857',
+      'data/test/IC15_1811',
       ]
 
 
@@ -52,7 +52,7 @@ model:
           max_len: 25
           d_model: 768
           character_path: "EN_symbol_dict.txt"
-          ckpt_path: "model/embedding_and_pe.pth"
+          ckpt_path: "model/text_encoder.pth"
 
       unet_pretrained: "model/stable-diffusion-v1-5/unet/diffusion_pytorch_model.bin"
       unet:

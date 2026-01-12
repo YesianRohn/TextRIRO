@@ -49,6 +49,8 @@ The inference result could be found in *example_result/* after:
 ### 2.3 Inference Results
 
 
+
+
 ## 3 Training
 ### 3.1 Data Preparation
 The training only relies on real data from STR like [Union14M](https://github.com/Mountchicken/Union14M), and we use the [OpenOCR version](https://huggingface.co/datasets/topdu/OpenOCR-Data/tree/main/Union14M-L-LMDB-Filtered).
@@ -58,13 +60,13 @@ Just train the MAERec model follow this [config](https://github.com/Topdu/OpenOC
 
 ### 3.2 TextRIRO Training
 ```bash
-$ cd TextRIRO/
+cd TextRIRO/
 # Modify the path of dir in the config file
-$ cd configs/
-$ vi train.yaml
+cd configs/
+vi train.yaml
 # Start training
-$ cd ..
-$ python train.py
+cd ..
+python train.py
 ```
 
 ## 4 Evaluation
@@ -88,10 +90,16 @@ FID, ACC, NED are uesd to evaluate the edited result, with reference to [qqqyd/M
 ```bash
 cd evaluation/
 python evaluation.py --target_path .../result_folder/ --gt_path .../ScenePair/t_f/
+python eval_real.py --saved_model models/TPS-ResNet-BiLSTM-Attn.pth --gt_file .../ScenePair/i_t.txt --image_folder .../result_folder/
 ```
 
+## 5 TextRIRO-3M
+
+Download the generated STR dataset from [HuggingFace]() or [ModelScope]().
+
 ## Related Resources
-Many thanks to these great projects  [MOSTEL](https://github.com/qqqyd/MOSTEL), [Union14M](),  [AnyText](https://github.com/tyxsspa/AnyText), [TextCtrl](https://github.com/lksshw/SRNet), [OpenOCR](), [RS-STE](), [TextSSR]().
+
+Many thanks to these great projects  [MOSTEL](https://github.com/qqqyd/MOSTEL), [Union14M](https://github.com/Mountchicken/Union14M),  [AnyText](https://github.com/tyxsspa/AnyText), [TextCtrl](https://github.com/weichaozeng/TextCtrl), [OpenOCR](https://github.com/Topdu/OpenOCR), [RS-STE](https://github.com/ZhengyaoFang/RS-STE), [TextSSR](https://github.com/YesianRohn/TextSSR).
 
 ## Citation
     TBD
