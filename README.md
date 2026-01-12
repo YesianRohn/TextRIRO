@@ -25,18 +25,7 @@ $ pip install torch==1.13.0+cu116 torchvision==0.14.0+cu116 torchaudio==0.13.0 -
 $ pip install -r requirement.txt
 ```
 ### 1.2 Checkpoints Preparation
-Download the checkpoints from [SD1-5](https://huggingface.co/stable-diffusion-v1-5/stable-diffusion-v1-5) and [SD2-1](https://www.modelscope.cn/models/AI-ModelScope/stable-diffusion-2-1-base) .The file structure should be set as follows:
-```bash
-TextRIRO/
-├── weights/
-│   ├── text_encoder.pth               # weight of STR pretrained text encoder
-│   └── sd/                            # pretrained weight of stable-diffusion-v1-5/v2-1
-│       ├── vae/                       # SD2-1
-│       ├── unet/                      # SD1-5
-│       └── scheduler/                 # SD1-5
-├── README.md
-├── ...
-```
+Download the checkpoints from [SD1-5](https://huggingface.co/stable-diffusion-v1-5/stable-diffusion-v1-5) and [SD2-1](https://www.modelscope.cn/models/AI-ModelScope/stable-diffusion-2-1-base) .
 ## 2 Inference
 ### 2.1 Data Preparation
 The file structure of inference data should be set as the *example/*:  
