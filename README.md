@@ -19,10 +19,10 @@
 git clone https://github.com/YesianRohn/TextRIRO.git
 cd TextRIRO
 # Install required packages
-$ conda create --name textriro python=3.8
-$ conda activate textriro
-$ pip install torch==1.13.0+cu116 torchvision==0.14.0+cu116 torchaudio==0.13.0 --extra-index-url https://download.pytorch.org/whl/cu116
-$ pip install -r requirement.txt
+conda create --name textriro python=3.8
+conda activate textriro
+pip install torch==1.13.0+cu116 torchvision==0.14.0+cu116 torchaudio==0.13.0 --extra-index-url https://download.pytorch.org/whl/cu116
+pip install -r requirement.txt
 ```
 ### 1.2 Checkpoints Preparation
 Download the checkpoints from [SD1-5](https://huggingface.co/stable-diffusion-v1-5/stable-diffusion-v1-5) and [SD2-1](https://www.modelscope.cn/models/AI-ModelScope/stable-diffusion-2-1-base) .
@@ -39,7 +39,7 @@ TextRIRO/
 ### 2.2 Edit Arguments
 Edit the arguments in *inference.py*, especially:
 ```bash
-parser.add_argument("--ckpt_path", type=str, default="weights/model.pth")
+parser.add_argument("--ckpt_path", type=str, default="textriro.pth")
 parser.add_argument("--dataset_dir", type=str, default="example/")
 parser.add_argument("--output_dir", type=str, default="example_result/")
 ```
@@ -54,7 +54,7 @@ The inference result could be found in *example_result/* after:
 The training only relies on real data from STR like [Union14M](https://github.com/Mountchicken/Union14M), and we use the [OpenOCR version](https://huggingface.co/datasets/topdu/OpenOCR-Data/tree/main/Union14M-L-LMDB-Filtered).
 
 ### 3.1 STR Pretraining
-Just train the MAERec model follow this [config](https://github.com/Topdu/OpenOCR/blob/main/configs/rec/maerec/vit_nrtr.yml), and export the [embedding](./weights/text_encoder.pth) part.
+Just train the MAERec model follow this [config](https://github.com/Topdu/OpenOCR/blob/main/configs/rec/maerec/vit_nrtr.yml), and export the [embedding](./model/text_encoder.pth) part.
 
 ### 3.2 TextRIRO Training
 ```bash
