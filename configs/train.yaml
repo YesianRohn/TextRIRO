@@ -1,0 +1,85 @@
+data:
+  target: "src.lmdbdata.WrappedDataModule"
+  batch_size: 32
+  train:
+    size: [64, 256]
+    lmdb_paths: [
+      'Union14M-L-LMDB-Filtered/filter_train_challenging',
+      'Union14M-L-LMDB-Filtered/filter_train_hard',
+      'Union14M-L-LMDB-Filtered/filter_train_medium',
+      'Union14M-L-LMDB-Filtered/filter_train_normal',
+      'Union14M-L-LMDB-Filtered/filter_train_easy',
+      ]
+
+  validation:
+    size: [64, 256]
+    lmdb_paths: [
+      'test/CUTE80',
+      'test/IC13_857',
+      'test/IC15_1811',
+      ]
+
+
+model:
+  target: "src.CtrlBase.ControlBase"
+  params:
+    control_config:
+      target: "src.CtrlBase.StylePyramidNet"
+      params:
+        image_size: [64, 256]
+        patch_size: 16
+        in_channels: 3
+        embed_dim: 768
+        model_channels: 320
+        channel_mult: [ 1, 2, 4, 4 ]
+        pyramid_sizes: [ [8, 32], [4, 16], [2, 8], [1, 4]]
+
+
+    base_config:
+      noise_scheduler: "diffusers.PNDMScheduler"
+      scheduler_config: "model/stable-diffusion-v1-5/scheduler/scheduler_config.json"
+      num_inference_steps: 20
+      min_training_steps: 0
+
+      vae:
+        pretrained: "model/stable-diffusion-2-1/vae/"
+        normalizer: 0.18215
+
+      text_encoder_optimized: False
+      text_encoder:
+        target: "src.CtrlBase.LabelEncoder"
+        params:
+          max_len: 25
+          d_model: 768
+          character_path: "EN_symbol_dict.txt"
+          ckpt_path: "model/embedding_and_pe.pth"
+
+      unet_pretrained: "model/stable-diffusion-v1-5/unet/diffusion_pytorch_model.bin"
+      unet:
+        target: "src.CtrlBase.ControlUNetModel"
+        params:
+          cross_attention_dim: 768
+
+      cond_on_text_image: False
+      font_path: "Arial_Unicode.ttf"
+
+#####################################################Lightning##########################################
+lightning:
+  log_every_n_steps: 32
+  accumulate_grad_batches: 8
+  max_epochs: 15
+  accelerator: "gpu"
+  strategy: ddp
+  default_root_dir: "output/train_log"
+
+image_logger:
+  target: "src.Base.BaseImageLogger"
+  params:
+    train_batch_frequency: 2000
+    valid_batch_frequency: 2
+    disable_wandb: false
+    generation_kwargs:
+      num_inference_steps: 20
+      num_sample_per_image: 1
+      guidance_scale: 2
+      seed: 42
