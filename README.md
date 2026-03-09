@@ -7,8 +7,8 @@
 
 ## 📝 TODOs
 
-- [ ] Release checkpoints and inference code
-- [ ] Release tranining pipeline;
+- [x] Release checkpoints and inference code
+- [x] Release tranining pipeline;
 - [ ] Provide demo link
 
 
