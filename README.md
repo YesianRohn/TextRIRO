@@ -8,7 +8,8 @@
 ## 📝 TODOs
 
 - [x] Release checkpoints and inference code
-- [x] Release tranining pipeline;
+- [x] Release tranining pipeline
+- [ ] Release inference results
 - [ ] Provide demo link
 
 
@@ -25,7 +26,8 @@ pip install torch==1.13.0+cu116 torchvision==0.14.0+cu116 torchaudio==0.13.0 --e
 pip install -r requirement.txt
 ```
 ### 1.2 Checkpoints Preparation
-Download the checkpoints from [SD1-5](https://huggingface.co/stable-diffusion-v1-5/stable-diffusion-v1-5) and [SD2-1](https://www.modelscope.cn/models/AI-ModelScope/stable-diffusion-2-1-base) .
+Download the checkpoints from [SD1-5](https://huggingface.co/stable-diffusion-v1-5/stable-diffusion-v1-5), [SD2-1](https://www.modelscope.cn/models/AI-ModelScope/stable-diffusion-2-1-base) and [TextRIRO-Model](https://huggingface.co/Yesianrohn/TextRIRO).
+
 ## 2 Inference
 ### 2.1 Data Preparation
 The file structure of inference data should be set as the *example/*:  
@@ -37,18 +39,18 @@ TextRIRO/
 ```
 
 ### 2.2 Edit Arguments
-Edit the arguments in *inference.py*, especially:
+Edit the arguments in 'inference.py', especially:
 ```bash
 parser.add_argument("--ckpt_path", type=str, default="textriro.pth")
 parser.add_argument("--dataset_dir", type=str, default="example/")
 parser.add_argument("--output_dir", type=str, default="example_result/")
 ```
 
-The inference result could be found in *example_result/* after:
+```bash
+python inference.py
+```
 
-### 2.3 Inference Results
-
-
+The inference result could be found in 'example_result/'.
 
 
 ## 3 Training
@@ -83,7 +85,7 @@ Download the ScenePair dataset from [Link](https://drive.google.com/file/d/1m_o2
 │   └── i_t_full.txt        # filename, text label, corresponding full-size image name and location information of images in t_f/
 ```
 ### 4.2 Generate Images
-Result of some methods on ScenePair dataset are provided here.
+Result of some methods on ScenePair dataset are provided [here](TBD).
 
 ### 4.3 Style Fidelity & Text Accuracy
 FID, ACC, NED are uesd to evaluate the edited result, with reference to [qqqyd/MOSTEL](https://github.com/qqqyd/MOSTEL).
@@ -95,7 +97,7 @@ python eval_real.py --saved_model models/TPS-ResNet-BiLSTM-Attn.pth --gt_file ..
 
 ## 5 TextRIRO-3M
 
-Download the generated STR dataset from [HuggingFace]() or [ModelScope]().
+Download the generated STR dataset from [HuggingFace](https://huggingface.co/datasets/Yesianrohn/TextRIRO-3M).
 
 ## Related Resources
 
