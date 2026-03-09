@@ -9,7 +9,7 @@
 
 - [x] Release checkpoints and inference code
 - [x] Release tranining pipeline
-- [ ] Release inference results
+- [x] Release inference results
 - [ ] Provide demo link
 
 
@@ -85,7 +85,7 @@ Download the ScenePair dataset from [Link](https://drive.google.com/file/d/1m_o2
 │   └── i_t_full.txt        # filename, text label, corresponding full-size image name and location information of images in t_f/
 ```
 ### 4.2 Generate Images
-Result of some methods on ScenePair dataset are provided [here](TBD).
+Result of some methods on ScenePair dataset are provided [here](https://huggingface.co/datasets/Yesianrohn/TextRIRO_ScenePair).
 
 ### 4.3 Style Fidelity & Text Accuracy
 FID, ACC, NED are uesd to evaluate the edited result, with reference to [qqqyd/MOSTEL](https://github.com/qqqyd/MOSTEL).
