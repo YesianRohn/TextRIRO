@@ -25,7 +25,11 @@ from einops import rearrange
 import string
 from diffusers.models.resnet import Upsample2D, Downsample2D
 
-
+def zero_module(module):
+    for p in module.parameters():
+        p.detach().zero_()
+    return module
+    
 class ControlBase(BaseTrainer):
 
     def __init__(self, control_config, base_config):
@@ -748,7 +752,6 @@ class StylePyramidNet(nn.Module):
 
 
 import math
-
 import numpy as np
 import torch
 import torch.nn.functional as F
