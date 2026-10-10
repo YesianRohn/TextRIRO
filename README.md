@@ -1,3 +1,5 @@
+<div align="center">
+
 # Real In, Real Out: What If We Only Use Real Data for Scene Text Editing?
 
 Xingsong Ye<sup>1,2</sup>, Yongkun Du<sup>1,2</sup>, Jiaxin Zhang<sup>3</sup>, Chong Sun<sup>3</sup>, Zhineng Chen<sup>1,2</sup>
@@ -7,6 +9,8 @@ Xingsong Ye<sup>1,2</sup>, Yongkun Du<sup>1,2</sup>, Jiaxin Zhang<sup>3</sup>, C
 <sup>3</sup>WeChat Vision, Tencent Inc.
 
 [NeurIPS 2026](https://neurips.cc/virtual/2026/loc/sydney/poster/153296) · [Model](https://huggingface.co/Yesianrohn/TextRIRO) · [Demo](https://huggingface.co/spaces/Yesianrohn/TextRIRO-Demo) · [TextRIRO-3M](https://huggingface.co/datasets/Yesianrohn/TextRIRO-3M) · [RIROCommon](https://huggingface.co/datasets/Yesianrohn/RIROCommon)
+
+</div>
 
 ## Overview
 
