@@ -1,5 +1,3 @@
-<div align="center">
-
 # Real In, Real Out: What If We Only Use Real Data for Scene Text Editing?
 
 Xingsong Ye<sup>1,2</sup>, Yongkun Du<sup>1,2</sup>, Jiaxin Zhang<sup>3</sup>, Chong Sun<sup>3</sup>, Zhineng Chen<sup>1,2</sup>
